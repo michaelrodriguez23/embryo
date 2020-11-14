@@ -1,6 +1,3 @@
-import p5 from "p5";
-import "p5/lib/addons/p5.sound";
-
 var song;
 var slider
 
@@ -28,8 +25,8 @@ song = loadSound("Audio/sadeFlip.wav", loaded); // 2nd arguement is the callback
 song.setVolume(0.9);
 amp = new p5.Amplitude();
 background(51,20,20);
-
 }
+
 
 function draw() {
   background(1);
@@ -38,6 +35,8 @@ function draw() {
   var diam = map(vol,0,0.3,80,500);
   fill(20);
   console.log(vol);
+
+
   if (vol > .010){
 
     fill(255);
@@ -80,18 +79,20 @@ function draw() {
 }
 
 function loaded(){
-  song.play();
+  // song.play();
   button = createButton("play");
   button.mousePressed(togglePlaying);
   jumpButton = createButton("jump");
   jumpButton.mousePressed(jumpSong);
 
 }
-function mouseClicked()
+function mouseClicked(){
 console.log("CLICKED");
 togglePlaying();
   }
+
 function togglePlaying() {
+
 
   if(!song.isPlaying()) {
     song.play();
