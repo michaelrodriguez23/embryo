@@ -87,6 +87,9 @@ function loaded(){
   jumpButton.mousePressed(jumpSong);
 
 }
+function mouseClicked() {
+togglePlaying();
+  }
 function togglePlaying() {
 
   if(!song.isPlaying()) {
