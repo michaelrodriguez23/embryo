@@ -4,23 +4,27 @@ var sliderRate
 var sliderPan;
 var button;
 var jumpButton;
+
 function preload() {
-  song = loadSound("audio/sadeFlip.wav", imageLoad);
+  embryo = loadImage('assets/Embryo.jpg');
+  embryo2 = loadImage('assets/embryo3.jpg');
+  embryo3 = loadImage('assets/Embryo-2.gif');
+  mitosis = loadImage('assets/mitosis.jpg');
+  dna = loadImage('assets/dna.gif');
+  song = loadSound("audio/sadeFlip.wav");
   song.setVolume(0.9);
+
 }
 function setup() {
   createCanvas(1200, 1200, WEBGL);
   tint(0, 153, 204, 126);
   background(51, 20, 20);
   amp = new p5.Amplitude();
+
 }
 
 function imageLoad(){
-  embryo = loadImage('assets/Embryo.jpg');
-  embryo2 = loadImage('assets/embryo3.jpg');
-  embryo3 = loadImage('assets/Embryo-2.gif');
-  mitosis = loadImage('assets/mitosis.jpg');
-  dna = loadImage('assets/dna.gif');
+
 }
 
 function draw() {
