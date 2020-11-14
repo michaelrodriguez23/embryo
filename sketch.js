@@ -88,7 +88,7 @@ function loaded(){
 
 }
 function mouseClicked()
-console.log("clicked");
+console.log("CLICKED");
 togglePlaying();
   }
 function togglePlaying() {
