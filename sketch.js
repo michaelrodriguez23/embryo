@@ -4,17 +4,17 @@ var sliderRate
 var sliderPan;
 var button;
 var jumpButton;
-
+function preload() {
+  song = loadSound("audio/sadeFlip.wav", imageLoad);
+  song.setVolume(0.9);
+}
 function setup() {
   createCanvas(1200, 1200, WEBGL);
   tint(0, 153, 204, 126);
   background(51, 20, 20);
   amp = new p5.Amplitude();
 }
-function preload() {
-  song = loadSound("audio/sadeFlip.wav", imageLoad);
-  song.setVolume(0.9);
-}
+
 function imageLoad(){
   embryo = loadImage('assets/Embryo.jpg');
   embryo2 = loadImage('assets/embryo3.jpg');
