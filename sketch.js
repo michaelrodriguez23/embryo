@@ -7,7 +7,9 @@ var sliderPan;
 var button;
 var jumpButton;
 
-
+function preload() {
+song = loadSound("Audio/sadeFlip.wav", loaded);
+}
 
 function setup() {
 createCanvas(1200,1200, WEBGL);
@@ -19,9 +21,7 @@ embryo2 = loadImage('embryo3.jpg');
 embryo3 = loadImage('Embryo-2.gif');
 mitosis = loadImage('mitosis.jpg');
 dna = loadImage('dna.gif');
-
-
-song = loadSound("Audio/sadeFlip.wav", loaded); // 2nd arguement is the callback
+ // 2nd arguement is the callback
 song.setVolume(0.9);
 amp = new p5.Amplitude();
 background(51,20,20);
@@ -80,6 +80,7 @@ function draw() {
 
 function loaded(){
   // song.play();
+  console.log("loaded");
   button = createButton("play");
   button.mousePressed(togglePlaying);
   jumpButton = createButton("jump");
