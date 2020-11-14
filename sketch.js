@@ -8,11 +8,6 @@ var button;
 var jumpButton;
 
 function preload() {
-  embryo = loadImage('Embryo.jpg');
-  embryo2 = loadImage('embryo3.jpg');
-  embryo3 = loadImage('Embryo-2.gif');
-  mitosis = loadImage('mitosis.jpg');
-  dna = loadImage('dna.gif');
   song = loadSound("Audio/sadeFlip.wav", loaded);
   song.setVolume(0.9);
 
@@ -21,6 +16,11 @@ function preload() {
 function setup() {
   createCanvas(1200, 1200, WEBGL);
   tint(0, 153, 204, 126);
+  embryo = loadImage('Embryo.jpg');
+  embryo2 = loadImage('embryo3.jpg');
+  embryo3 = loadImage('Embryo-2.gif');
+  mitosis = loadImage('mitosis.jpg');
+  dna = loadImage('dna.gif');
   // cam = createCapture(VIDEO);
   amp = new p5.Amplitude();
   background(51, 20, 20);
@@ -75,17 +75,10 @@ function draw() {
 }
 
 function loaded() {
-  // song.play();
-  console.log("loaded");
-  button = createButton("play");
-  button.mousePressed(togglePlaying);
-  jumpButton = createButton("jump");
-  jumpButton.mousePressed(jumpSong);
 
 }
 
 function mouseClicked() {
-  console.log("CLICKED");
   togglePlaying();
 }
 
@@ -95,10 +88,10 @@ function togglePlaying() {
   if (!song.isPlaying()) {
     song.play();
     song.setVolume(0.3);
-    button.html("pause");
+
   } else {
     song.pause();
-    button.html("play");
+
   }
 }
 
