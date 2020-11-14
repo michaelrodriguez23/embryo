@@ -21,7 +21,6 @@ function imageLoad(){
   embryo3 = loadImage('assets/Embryo-2.gif');
   mitosis = loadImage('assets/mitosis.jpg');
   dna = loadImage('assets/dna.gif');
-
 }
 
 function draw() {
@@ -62,8 +61,6 @@ function draw() {
   sphere(diam);
   var x = 1;
 }
-
-
 
 function mouseClicked() {
   togglePlaying();
