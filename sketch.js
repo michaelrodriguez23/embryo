@@ -23,15 +23,13 @@ function setup() {
 
 }
 
-function imageLoad(){
-
-}
-
 function draw() {
   background(1);
-  camera(mouseX, mouseY, mouseX + sin(frameCount * 0.01) * 1000, 2, -3, -8, -2, -5, -9);
+  var val = mouseY;
+  camera(val, val/2, mouseX + sin(frameCount * 0.01) * 1000, 2, -mouseX, mouseY, val, -9, -0);
   var vol = amp.getLevel();
   var diam = map(vol, 0, 0.3, 80, 500);
+  val+10;
   fill(20);
   if (vol > .010) {
     fill(255);
@@ -40,10 +38,12 @@ function draw() {
   if (vol > .030) {
     fill(255);
     texture(embryo3);
+    val =2;
   }
   if (vol > .040) {
     fill(40);
     texture(embryo2);
+    val =2;
   }
   if (vol > .050) {
     ambientLight(255, 50, 0);
@@ -56,11 +56,13 @@ function draw() {
     ambientLight(255, 250, 0);
     texture(embryo3);
     background(255);
+    val = mouseY;
   }
   if (vol > .070) {
     fill(250);
     texture(embryo);
     background(255);
+    val = 1;
   }
   sphere(diam);
   var x = 1;
