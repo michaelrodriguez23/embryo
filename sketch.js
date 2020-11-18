@@ -4,41 +4,67 @@ var sliderRate
 var sliderPan;
 var button;
 var jumpButton;
+let myFont;
+let graphics;
+var angle = 45;
+let bg;
+let y = 0;
 
 function preload() {
   embryo = loadImage('assets/Embryo.jpg');
   embryo2 = loadImage('assets/embryo3.jpg');
   embryo3 = loadImage('assets/Embryo-2.gif');
   mitosis = loadImage('assets/mitosis.jpg');
+  warnings = loadImage('assets/warningt.jpg');
   dna = loadImage('assets/dna.gif');
-  song = loadSound("audio/sadeFlip.wav");
+  dna = loadImage('assets/dna.gif');
+  song = loadSound("audio/SPACE.wav");
   song.setVolume(0.9);
+  myFont = loadFont('assets/BarlowCondensed-BlackItalic.otf');
+  bg = loadImage('assets/warningt.jpg');
 
 }
 function setup() {
-  createCanvas(1200, 1200, WEBGL);
+  createCanvas(windowWidth, windowHeight, WEBGL);
   tint(0, 153, 204, 126);
   background(51, 20, 20);
+   graphics = createGraphics(200,200);
+   graphics.fill(255);
+   graphics.textAlign(CENTER);
+   graphics.textSize(14);
+   graphics.background(0);
+   graphics.textFont(myFont);
+   graphics.text('CLICK TO START',150,150);
   amp = new p5.Amplitude();
+
 
 }
 
 function draw() {
-  background(1);
-  var val = mouseY;
-  camera(val, val/2, mouseX + sin(frameCount * 0.01) * 1000, 2, -mouseX, mouseY, val, -9, -0);
+  background(255);
+
+
+
+  let camX = map(mouseX,0,width,0,0);
+//camera(camX,0,(height/2)/tan(PI/6), 0,0,0,0,1,0);
+  var val = 10;
   var vol = amp.getLevel();
-  var diam = map(vol, 0, 0.3, 80, 500);
-  val+10;
+
+  var diam = map(vol, 0, 1, mouseY/2, 550);
   fill(20);
+  texture(graphics);
+    val*10;
   if (vol > .010) {
     fill(255);
-    texture(embryo3);
+    texture(embryo);
+    var diam = map(vol, mouseY/2, 1, mouseY/2, 550);
+
   }
   if (vol > .030) {
     fill(255);
-    texture(embryo3);
-    val =2;
+    texture(embryo2);
+      var diam = map(vol, 0, 1, mouseY/2, 550);
+      angle +=0;;
   }
   if (vol > .040) {
     fill(40);
@@ -48,31 +74,47 @@ function draw() {
   if (vol > .050) {
     ambientLight(255, 50, 0);
     ambientMaterial(250);
+        background(255,0,0);
     fill(250);
     texture(mitosis);
   }
   if (vol > .060) {
+
     fill(250);
     ambientLight(255, 250, 0);
-    texture(embryo3);
-    background(255);
-    val = mouseY;
+    texture(warnings);
+        background(255,255,0);
+    angle +=21;
   }
   if (vol > .070) {
-    fill(250);
+
     texture(embryo);
     background(255);
+    angle +=0201;
     val = 1;
   }
+let dirY = (mouseY / height - 0.5) *4;
+let dirX = (mouseX / width - 0.5) *5;
+
+directionalLight(0, 0, 0, dirX, -dirY, 1.5);
+
+
+rotateX(angle*-.15);
+rotateY(angle * 01);
+rotateZ(angle * 0.12);
   sphere(diam);
-  var x = 1;
+  angle +=0.005;
+
+
 }
 
 function mouseClicked() {
   togglePlaying();
+
 }
 
 function togglePlaying() {
+
   if (!song.isPlaying()) {
     song.play();
     song.setVolume(0.3);
@@ -81,4 +123,5 @@ function togglePlaying() {
     song.pause();
 
   }
+
 }
