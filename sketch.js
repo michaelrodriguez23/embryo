@@ -36,24 +36,15 @@ function setup() {
    graphics.textFont(myFont);
    graphics.text('CLICK TO START',150,150);
   amp = new p5.Amplitude();
-
-
 }
 
 function draw() {
   background(255);
-
-
-
-  let camX = map(mouseX,0,width,0,0);
-//camera(camX,0,(height/2)/tan(PI/6), 0,0,0,0,1,0);
-  var val = 10;
   var vol = amp.getLevel();
-
   var diam = map(vol, 0, 1, mouseY/2, 550);
   fill(20);
   texture(graphics);
-    val*10;
+
   if (vol > .010) {
     fill(255);
     texture(embryo);
@@ -83,11 +74,10 @@ function draw() {
     fill(250);
     ambientLight(255, 250, 0);
     texture(warnings);
-        background(255,255,0);
+    background(255,255,0);
     angle +=21;
   }
   if (vol > .070) {
-
     texture(embryo);
     background(255);
     angle +=0201;
@@ -95,33 +85,24 @@ function draw() {
   }
 let dirY = (mouseY / height - 0.5) *4;
 let dirX = (mouseX / width - 0.5) *5;
-
 directionalLight(0, 0, 0, dirX, -dirY, 1.5);
-
-
 rotateX(angle*-.15);
 rotateY(angle * 01);
 rotateZ(angle * 0.12);
-  sphere(diam);
-  angle +=0.005;
-
-
+sphere(diam);
+angle +=0.005;
 }
 
 function mouseClicked() {
   togglePlaying();
-
 }
 
 function togglePlaying() {
-
   if (!song.isPlaying()) {
     song.play();
     song.setVolume(0.3);
-
   } else {
     song.pause();
-
   }
 
 }
