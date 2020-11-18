@@ -11,17 +11,17 @@ let bg;
 let y = 0;
 
 function preload() {
+  song = loadSound("audio/SPACE.wav");
+  song.setVolume(0.9);
   embryo = loadImage('assets/Embryo.jpg');
   embryo2 = loadImage('assets/embryo3.jpg');
   embryo3 = loadImage('assets/Embryo-2.gif');
   mitosis = loadImage('assets/mitosis.jpg');
   warnings = loadImage('assets/warningt.jpg');
   dna = loadImage('assets/dna.gif');
-  dna = loadImage('assets/dna.gif');
-  song = loadSound("audio/SPACE.wav");
-  song.setVolume(0.9);
-  myFont = loadFont('assets/BarlowCondensed-BlackItalic.otf');
   bg = loadImage('assets/warningt.jpg');
+  myFont = loadFont('assets/BarlowCondensed-BlackItalic.otf');
+
 
 }
 function setup() {
