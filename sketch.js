@@ -89,20 +89,26 @@ directionalLight(0, 0, 0, dirX, -dirY, 1.5);
 rotateX(angle*-.15);
 rotateY(angle * 01);
 rotateZ(angle * 0.12);
-sphere(diam);
-angle +=0.005;
+  sphere(diam);
+  angle +=0.005;
+
+
 }
 
 function mouseClicked() {
   togglePlaying();
+
 }
 
 function togglePlaying() {
+
   if (!song.isPlaying()) {
     song.play();
     song.setVolume(0.3);
+
   } else {
     song.pause();
+
   }
 
 }
