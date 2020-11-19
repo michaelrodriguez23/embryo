@@ -18,6 +18,7 @@ function preload() {
   embryo3 = loadImage('assets/Embryo-2.gif');
   mitosis = loadImage('assets/mitosis.jpg');
   warnings = loadImage('assets/warningt.jpg');
+  brainScan = loadImage('assets/brain.scan_.jpg');
   dna = loadImage('assets/dna.gif');
   bg = loadImage('assets/warningt.jpg');
   myFont = loadFont('assets/BarlowCondensed-BlackItalic.otf');
@@ -43,7 +44,11 @@ function draw() {
   var vol = amp.getLevel();
   var diam = map(vol, 0, 1, mouseY/2, 550);
   fill(20);
-  texture(graphics);
+  if (!song.isPlaying()) {
+    texture(graphics);
+  }else{
+    texture(brainScan);
+  }
 
   if (vol > .010) {
     fill(255);
@@ -67,13 +72,13 @@ function draw() {
     ambientMaterial(250);
         background(255,0,0);
     fill(250);
-    texture(mitosis);
+    texture(brainScan);
   }
   if (vol > .060) {
 
     fill(250);
     ambientLight(255, 250, 0);
-    texture(warnings);
+    texture(mitosis);
     background(255,255,0);
     angle +=21;
   }
@@ -103,6 +108,7 @@ function mouseClicked() {
 function togglePlaying() {
 
   if (!song.isPlaying()) {
+    texture(graphics);
     song.play();
     song.setVolume(0.3);
 
