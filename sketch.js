@@ -11,7 +11,7 @@ let bg;
 let y = 0;
 
 function preload() {
-  song = loadSound("SPACE.WAV");
+  song = loadSound("audio/SPACE.WAV");
   song.setVolume(0.9);
   embryo = loadImage('assets/Embryo.jpg');
   embryo2 = loadImage('assets/embryo3.jpg');
