@@ -12,7 +12,7 @@ let y = 0;
 
 function preload() {
   song = loadSound("SAY YES.WAV");
-  song.setVolume(0.9);
+  song.setVolume(1);
   embryo = loadImage('assets/Embryo.jpg');
   embryo2 = loadImage('assets/embryo3.jpg');
   embryo3 = loadImage('assets/Embryo-2.gif');
@@ -36,30 +36,39 @@ function setup() {
    graphics.background(0);
    graphics.textFont(myFont);
    graphics.text('CLICK TO START',150,150);
+
+   alert = createGraphics(200,200);
+   alert.fill(255);
+   alert.textAlign(CENTER);
+   alert.textSize(12);
+   alert.background(255,0,00);
+   alert.textFont(myFont);
+   alert.text('EPILEPSY\n WARNING ',150,150);
   amp = new p5.Amplitude();
 }
 
 function draw() {
   background(255);
   var vol = amp.getLevel();
-  var diam = map(vol, 0, 1, mouseY/2, 550);
-  fill(20);
+  var diam = map(vol, 0, 1, 250, 550);
+  fill(40);
   if (!song.isPlaying()) {
-    texture(graphics);
+    background(warnings, 255);
+    texture(alert);
   }else{
-    texture(brainScan);
+    texture(embryo);
   }
 
   if (vol > .010) {
     fill(255);
     texture(embryo);
-    var diam = map(vol, mouseY/2, 1, mouseY/2, 550);
+    var diam = map(vol, 202, mouseX/2, 222, 550);
 
   }
   if (vol > .030) {
     fill(255);
     texture(embryo2);
-      var diam = map(vol, 0, 1, mouseY/2, 550);
+      var diam = map(vol, 0, 1, 220, 550);
       angle +=0;;
   }
   if (vol > .040) {
@@ -102,9 +111,7 @@ rotateZ(angle * 0.12);
 
 function mouseClicked() {
   togglePlaying();
-
 }
-
 function togglePlaying() {
 
   if (!song.isPlaying()) {
