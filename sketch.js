@@ -53,9 +53,9 @@ function draw() {
   var diam = map(vol, 0, 1, 250, 550);
   fill(40);
   if (!song.isPlaying()) {
-    background(warnings, 255);
     texture(alert);
   }else{
+      
     texture(embryo);
   }
 
